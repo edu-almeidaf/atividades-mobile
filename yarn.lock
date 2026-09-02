@@ -3355,9 +3355,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"garagem-carros@workspace:.":
+"atividades-mobile@workspace:.":
   version: 0.0.0-use.local
-  resolution: "garagem-carros@workspace:."
+  resolution: "atividades-mobile@workspace:."
   dependencies:
     "@types/react": "npm:~19.1.0"
     expo: "npm:~54.0.36"
