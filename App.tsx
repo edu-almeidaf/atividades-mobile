@@ -1,11 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, Button, StyleSheet } from 'react-native';
+import { ParkingSensor } from './src/components/ParkingSensor';
 
 export default function App() {
+  const [isCarOn, setIsCarOn] = useState<boolean>(false);
+
+  const toggleCar = () => setIsCarOn(!isCarOn);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Button 
+        title={isCarOn ? "Desligar Carro" : "Ligar Carro (Ativar Sensor)"} 
+        onPress={toggleCar}
+        color={isCarOn ? "#F44336" : "#2196F3"}
+      />
+
+      {isCarOn && <ParkingSensor />}
     </View>
   );
 }
@@ -13,8 +23,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#FFFFFF',
   },
 });
