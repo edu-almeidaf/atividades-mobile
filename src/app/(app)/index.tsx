@@ -7,6 +7,7 @@ import { EmptyList } from '../../components/EmptyList';
 import { FormButton } from '../../components/FormButton';
 import { LoadingView } from '../../components/LoadingView';
 import { SaldoCard } from '../../components/SaldoCard';
+import { Separator } from '../../components/Separator';
 import { TransacaoItem } from '../../components/TransacaoItem';
 import { deleteTransacao, getTransacoes } from '../../services/transacoes';
 import { colors, spacing } from '../../theme';
@@ -99,10 +100,6 @@ export default function TransacoesScreen() {
   );
 }
 
-function Separator() {
-  return <View style={styles.separator} />;
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -110,9 +107,6 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingBottom: spacing.md,
-  },
-  separator: {
-    height: spacing.sm,
   },
   footer: {
     paddingHorizontal: spacing.md,
