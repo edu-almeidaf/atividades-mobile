@@ -39,3 +39,12 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# testes
+coverage/
+
+# PocketBase (o pocketbase.zip de entrega é versionado)
+pocketbase/pocketbase
+pocketbase/pocketbase.exe
+pocketbase/pb_data/
+.env
