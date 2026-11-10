@@ -7,7 +7,6 @@ import { LoadingView } from '../components/LoadingView';
 function RootNavigator() {
   const { token, isLoading } = useAuth();
 
-  // Enquanto lê o AsyncStorage, ainda não sabemos para qual fluxo ir
   if (isLoading) {
     return <LoadingView message="Restaurando sessão..." />;
   }
@@ -16,12 +15,10 @@ function RootNavigator() {
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      {/* Fluxo restrito: só com usuário autenticado */}
       <Stack.Protected guard={isLoggedIn}>
         <Stack.Screen name="(app)" />
       </Stack.Protected>
 
-      {/* Fluxo de autenticação: só sem usuário */}
       <Stack.Protected guard={!isLoggedIn}>
         <Stack.Screen name="login" />
       </Stack.Protected>

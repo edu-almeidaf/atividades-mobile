@@ -1,6 +1,5 @@
 import { Alert, Platform } from 'react-native';
 
-// No Expo Web o Alert.alert não funciona, então usamos o alert/confirm do navegador
 const browser = globalThis as unknown as {
   alert: (message: string) => void;
   confirm: (message: string) => boolean;

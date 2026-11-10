@@ -1,12 +1,7 @@
-/// <reference path="../pb_data/types.d.ts" />
-
-// Cria a coleção "transacoes", o admin do painel e um usuário de teste.
-// Roda automaticamente na primeira vez que o PocketBase é iniciado.
 migrate(
   (app) => {
     const users = app.findCollectionByNameOrId('users');
 
-    // Cada usuário só enxerga e altera as próprias transações
     const ownerRule = 'user = @request.auth.id';
 
     const transacoes = new Collection({
@@ -35,14 +30,12 @@ migrate(
     });
     app.save(transacoes);
 
-    // Admin do painel (http://127.0.0.1:8090/_/)
     const superusers = app.findCollectionByNameOrId('_superusers');
     const admin = new Record(superusers);
     admin.setEmail('admin@minhasfinancas.com');
     admin.setPassword('admin12345');
     app.save(admin);
 
-    // Usuário de teste para entrar no app
     const user = new Record(users);
     user.setEmail('teste@teste.com');
     user.setPassword('12345678');

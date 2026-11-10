@@ -33,7 +33,6 @@ export default function TransacoesScreen() {
     }
   }, []);
 
-  // Recarrega sempre que a tela volta a ficar visível (ex: depois de criar/editar)
   useFocusEffect(
     useCallback(() => {
       carregarTransacoes();

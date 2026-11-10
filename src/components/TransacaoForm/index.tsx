@@ -19,7 +19,6 @@ interface TransacaoFormProps {
 
 const EMPTY_VALUES: TransacaoFormValues = { descricao: '', valor: '', tipo: null };
 
-// Formulário usado tanto na criação (POST) quanto na edição (PATCH)
 export function TransacaoForm({ initialValues = EMPTY_VALUES, submitLabel, onSubmit }: TransacaoFormProps) {
   const [values, setValues] = useState<TransacaoFormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors<'descricao' | 'valor' | 'tipo'>>({});

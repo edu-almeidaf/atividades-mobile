@@ -11,7 +11,6 @@ export interface Session {
 }
 
 export async function saveSession({ token, user }: Session): Promise<void> {
-  // AsyncStorage só guarda strings, por isso o JSON.stringify
   await AsyncStorage.multiSet([
     [TOKEN_KEY, token],
     [USER_KEY, JSON.stringify(user)],

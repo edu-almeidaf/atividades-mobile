@@ -25,7 +25,6 @@ export default function LoginScreen() {
 
     setLoading(true);
     try {
-      // Ao salvar o token, o _layout troca para o fluxo restrito sozinho
       await login(email, password);
     } catch (error) {
       showAlert('Erro ao entrar', getErrorMessage(error));

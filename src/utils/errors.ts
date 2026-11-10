@@ -1,6 +1,5 @@
 import { isAxiosError } from 'axios';
 
-// Transforma o erro do Axios/PocketBase numa mensagem para o usuário
 export function getErrorMessage(error: unknown): string {
   if (isAxiosError(error)) {
     if (!error.response) {

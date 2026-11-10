@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { Platform } from 'react-native';
 
-// Emulador Android acessa o PC por 10.0.2.2; web e iOS por localhost.
-// Celular físico: defina EXPO_PUBLIC_API_URL=http://<IP-do-PC>:8090 no arquivo .env
 const DEFAULT_URL = Platform.OS === 'android' ? 'http://10.0.2.2:8090' : 'http://localhost:8090';
 
 export const api = axios.create({
@@ -17,7 +15,6 @@ export function setAuthToken(token: string | null) {
   authToken = token;
 }
 
-// O AuthContext registra aqui o que fazer quando o token expira (logout)
 export function setUnauthorizedHandler(handler: (() => void) | null) {
   onUnauthorized = handler;
 }

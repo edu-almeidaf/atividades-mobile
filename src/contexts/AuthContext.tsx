@@ -5,19 +5,16 @@ import { loginRequest } from '../services/auth';
 import { clearSession, loadSession, saveSession } from '../storage/session';
 import type { User } from '../types/User';
 
-// 1. Shared Props
 export interface AuthContextProps {
   user: User | null;
   token: string | null;
-  isLoading: boolean; // true enquanto a sessão salva está sendo restaurada
+  isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
 }
 
-// 2. createContext
 export const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
-// 3. Provider
 export default function AuthContextProvider({ children }: PropsWithChildren) {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
@@ -30,7 +27,6 @@ export default function AuthContextProvider({ children }: PropsWithChildren) {
     await clearSession();
   }, []);
 
-  // Ao abrir o app, recupera o token salvo e vai direto para a área restrita
   useEffect(() => {
     async function restoreSession() {
       try {
@@ -48,7 +44,6 @@ export default function AuthContextProvider({ children }: PropsWithChildren) {
     restoreSession();
   }, []);
 
-  // Token expirado/inválido (401) -> volta para o login
   useEffect(() => {
     setUnauthorizedHandler(() => {
       logout();
@@ -72,7 +67,6 @@ export default function AuthContextProvider({ children }: PropsWithChildren) {
   return <AuthContext.Provider value={authContext}>{children}</AuthContext.Provider>;
 }
 
-// 4. Consumer Hook
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
